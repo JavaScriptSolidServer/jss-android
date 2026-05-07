@@ -42,5 +42,5 @@ yarn-debug.log
 yarn-error.log
 
 # Generated
-*.lock
 .flutter-version
+# Note: pubspec.lock IS committed (Flutter convention for application packages)
