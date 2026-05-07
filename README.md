@@ -64,11 +64,13 @@ See the [feasibility spike](https://github.com/JavaScriptSolidServer/JavaScriptS
 # Prereqs: Flutter SDK, Android SDK, JDK 17, an Android device or emulator
 flutter --version
 
-# One-time project scaffold (see "v1 scope" — done at first commit after this)
-flutter create --platforms android --org io.jss .
+# One-time project scaffold
+# `--org live.jss` reverses the project's docs domain (jss.live).
+# Final Android package id: live.jss.jss_android
+flutter create --platforms android --org live.jss .
 
-# Bundle JSS into the APK assets
-./scripts/bundle-jss.sh   # (TBD) — copies bin/, src/, package.json, node_modules/
+# Bundle JSS into the APK assets (does NPM pack + sanity check)
+./scripts/bundle-jss.sh
 
 # Run on a connected device
 flutter run
