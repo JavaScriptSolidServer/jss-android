@@ -1,46 +1,42 @@
-# Flutter / Dart
-.dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
-.packages
-.pub-cache/
-.pub/
+# Gradle
+.gradle/
 build/
-.metadata
+out/
 
-# IDE
+# Android Studio / IntelliJ
 .idea/
-.vscode/
 *.iml
 *.ipr
 *.iws
-.DS_Store
+local.properties
+captures/
 
-# Android
-android/.gradle/
-android/captures/
-android/local.properties
-android/app/release/
-android/app/debug/
+# Build artifacts
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+proguard/
+
+# Signing keys (NEVER commit)
 *.keystore
 *.jks
-android/key.properties
+key.properties
 
-# iOS (kept in case we ever scope iOS in)
-ios/Pods/
-ios/.symlinks/
-ios/Flutter/Flutter.framework
-ios/Flutter/Flutter.podspec
+# Logs
+*.log
 
-# Bundled JSS — copied in by scripts/bundle-jss.sh, not tracked
-assets/nodejs-project/
+# OS / editor
+.DS_Store
+.vscode/
 
-# Node (only present transiently while bundling)
+# Bundled JSS (produced by scripts/bundle-jss.sh, not tracked)
+app/src/main/assets/jss/
+
+# Vendored libnode binaries (produced by scripts/fetch-libnode.sh, not tracked)
+app/libnode/
+
+# Node (transient while bundling)
 node_modules/
 npm-debug.log
-yarn-debug.log
-yarn-error.log
-
-# Generated
-.flutter-version
-# Note: pubspec.lock IS committed (Flutter convention for application packages)

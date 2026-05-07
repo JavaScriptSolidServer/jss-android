@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 #
-# bundle-jss.sh — populate assets/nodejs-project/ with a JSS bundle
+# bundle-jss.sh — populate app/src/main/assets/jss/ with a JSS bundle
 #
 # Pulls the published `javascript-solid-server` tarball from npm, installs
-# its production dependencies, and copies the result to assets/nodejs-project/.
-# That directory is then bundled into the APK as nodejs-mobile's project root.
+# its production dependencies, and copies the result to
+# app/src/main/assets/jss/. That directory is then bundled into the APK
+# as the Node.js project root; on first launch MainActivity / JssService
+# copy it out to <filesDir>/jss/ so Node can write to it.
 #
 # Usage:
 #   ./scripts/bundle-jss.sh                  # latest published version
@@ -19,7 +21,7 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-DEST="$REPO_ROOT/assets/nodejs-project"
+DEST="$REPO_ROOT/app/src/main/assets/jss"
 
 SOURCE_DIR=""
 VERSION="latest"
