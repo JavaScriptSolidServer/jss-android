@@ -40,7 +40,7 @@ See the [feasibility spike](https://github.com/JavaScriptSolidServer/JavaScriptS
 - [ ] Flutter project scaffold (`flutter create .`)
 - [ ] `nodejs-mobile-flutter` plugin wired in
 - [ ] JSS source bundled as `assets/nodejs-project/`
-- [ ] Boot `bin/jss.js start --single-user --port 4443` on app launch
+- [ ] Boot `bin/jss.js start --single-user --port 4443 --host 127.0.0.1 --root <files-dir>/data --idp` on app launch (CLI surface verified by [spike](https://github.com/JavaScriptSolidServer/JavaScriptSolidServer/issues/366#issuecomment-4401585143))
 - [ ] WebView at `http://localhost:4443/`
 - [ ] Foreground service + persistent notification
 - [ ] APK build target (debug + release)

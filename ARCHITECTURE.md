@@ -41,18 +41,21 @@ Ship a single-tap Android install that runs a personal Solid pod on the phone. T
 1. App `main()` → run Flutter app
 2. Flutter `initState` → call `NodejsMobile.startNodeProject()` with:
    - script: `bin/jss.js`
-   - args: `['start', '--single-user', '--port', '4443', '--data-root', <android-files-dir>/data]`
+   - args: `['start', '--single-user', '--port', '4443', '--host', '127.0.0.1', '--root', '<android-files-dir>/data', '--idp']`
+   - env: `JSS_SINGLE_USER_PASSWORD=<derived-or-prompted>` (only on first launch, to seed the IDP account)
 3. Node thread starts; JSS imports its modules; Fastify binds to `127.0.0.1:4443`
 4. Flutter listens for the "ready" message on the channel (or polls `GET /` until 200) and shows the WebView
 
 ## Data layout on device
 
-- `<android-files-dir>/data/` — JSS pod data (passed via `--data-root` and `DATA_ROOT` env)
-- `<android-files-dir>/data/.idp/` — IDP credentials, keys
-- `<android-files-dir>/.well-known/` — token store, etc.
+- `<android-files-dir>/data/` — JSS pod data (passed via `--root <path>` or `DATA_ROOT` env)
+- `<android-files-dir>/data/.idp/` — IDP credentials, keys (verified by spike: created on first boot)
+- `<android-files-dir>/data/.well-known/` — token store, etc. (when `--idp` is on)
 - `<cache-dir>/` — JSS notification queues, ephemeral state
 
-The pod's filesystem layout is unchanged from desktop JSS — we just point `--data-root` at app-private storage.
+The pod's filesystem layout is unchanged from desktop JSS — we just point `--root` at app-private storage. Verified by booting `jss start --single-user --port 4444 --root /tmp/foo --idp`: full pod tree (profile/, public/, private/, inbox/, settings/, .idp/) is created at the supplied path with nothing leaking to `~/.jss/` or the cwd.
+
+> **Spike note (2026-05-08):** the CLI flag is `-r, --root <path>`, not `--data-root` as initially drafted. The architecture docs and any future Dart launcher should use `--root`.
 
 ## Auth model on a single-user phone pod
 
@@ -78,10 +81,11 @@ The pod's filesystem layout is unchanged from desktop JSS — we just point `--d
 
 ## Open questions
 
-- Does `nodejs-mobile`'s most recent release ship Node ≥ 18? (verify before scaffold, but `engines.node: ">=18.0.0"` is JSS's floor)
+- Does `nodejs-mobile`'s most recent release ship Node ≥ 18? (`engines.node: ">=18.0.0"` is JSS's floor; spike on dev box ran Node 24 with one `oidc-provider` warning about preferring v22 LTS — runtime is *forgiving*, but we should pin the mobile target to whatever Node `nodejs-mobile` ships)
 - Memory ceiling on cheap Android devices (1 GB RAM)? `oidc-provider` is the heaviest dep; might need `--idp` off in a "lite" mode
 - How do we surface the WebID/pod URL outside the app? (Deep link? Share sheet? A "copy URL" button?)
 - Does the foreground-service notification need a stop action wired to a graceful Fastify shutdown? (yes — need to expose this via the plugin channel)
+- First-run UX: where do we surface the IDP password? Options: (a) auto-generate, store in Android Keystore, never show; (b) prompt user; (c) skip IDP entirely on phone (signed-in via did:nostr only)
 
 ## Build & release
 
