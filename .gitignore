@@ -1,0 +1,46 @@
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+.metadata
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.DS_Store
+
+# Android
+android/.gradle/
+android/captures/
+android/local.properties
+android/app/release/
+android/app/debug/
+*.keystore
+*.jks
+android/key.properties
+
+# iOS (kept in case we ever scope iOS in)
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+
+# Bundled JSS — copied in by scripts/bundle-jss.sh, not tracked
+assets/nodejs-project/
+
+# Node (only present transiently while bundling)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Generated
+*.lock
+.flutter-version
