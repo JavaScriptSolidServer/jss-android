@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  JSS binds 127.0.0.1 with plain HTTP. Android 9+ blocks cleartext by
+  default; whitelist loopback only. Everything else still goes through
+  the system default (HTTPS-only) policy.
+-->
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">127.0.0.1</domain>
+        <domain includeSubdomains="false">localhost</domain>
+    </domain-config>
+</network-security-config>

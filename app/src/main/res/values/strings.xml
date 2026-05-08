@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JSS</string>
+    <string name="notification_channel_name">JSS pod</string>
+    <string name="notification_channel_description">Persistent notification while your pod is running.</string>
+    <string name="notification_title">JSS pod</string>
+    <string name="notification_text">Running on 127.0.0.1:%1$d</string>
+    <string name="notification_action_stop">Stop</string>
+    <string name="splash_text">Starting your pod…</string>
+    <string name="splash_failed">Couldn\'t start the pod. Tap to retry.</string>
+</resources>

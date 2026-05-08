@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Placeholder: minimalist "JSS" wordmark on a transparent background.
+     TODO: replace with a real launcher icon before public release. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M40,42 L40,66 Q40,72 34,72 Q30,72 28,68 L31,66 Q32,68 34,68 Q36,68 36,66 L36,42 Z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M48,66 Q50,68 54,68 Q60,68 60,64 Q60,60 54,58 Q48,57 48,52 Q48,46 56,46 Q60,46 64,49 L62,52 Q60,50 56,50 Q52,50 52,52 Q52,55 56,56 Q64,57 64,62 Q64,72 54,72 Q48,72 46,69 Z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M68,66 Q70,68 74,68 Q80,68 80,64 Q80,60 74,58 Q68,57 68,52 Q68,46 76,46 Q80,46 84,49 L82,52 Q80,50 76,50 Q72,50 72,52 Q72,55 76,56 Q84,57 84,62 Q84,72 74,72 Q68,72 66,69 Z" />
+</vector>
