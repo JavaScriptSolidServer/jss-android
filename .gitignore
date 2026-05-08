@@ -2,6 +2,7 @@
 .gradle/
 build/
 out/
+.cxx/
 
 # Android Studio / IntelliJ
 .idea/
